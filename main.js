@@ -3,7 +3,7 @@ test.setAttribute("id", "test");
 test.innerText = "Test";
 
 let delay = 0;
-const delayMatch = window.location.search.match(/(?<=delay=)\d/g);
+const delayMatch = window.location.search.match(/(?<=delay=)\d+/g);
 if (delayMatch && delayMatch[0]) {
     delay = Number(delayMatch[0]);
 }
