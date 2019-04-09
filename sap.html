@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>SAP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Roboto");
+        body {
+        color: rgba(0, 0, 0, 0.6);
+        font-family: "Roboto";
+        background: lightblue;
+        margin: 0;
+        padding: 0;
+        }
+
+        div {
+        background: white;
+        }
+
+        #header {
+        background: transparent;
+        font-size: 14px;
+        height: 48px;
+        padding-left: 10%;
+        background: white;
+        margin-bottom: 48px;
+        font-weight: bold;
+        border-top: 4px solid lightblue;
+        }
+
+        #global {
+        background: transparent;
+        }
+
+        #container {
+        min-height: 400px;
+        width: 80%;
+        margin: 0 auto;
+        padding: 24px;
+        margin-bottom: 48px;
+        }
+        #container #menu {
+        padding-top: 12px;
+        margin-bottom: 24px;
+        border-bottom: 1px solid lightblue;
+        }
+        #container #menu .menu-item {
+        border-bottom: 3px solid lightblue;
+        width: 100px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        }
+        #container #content-header {
+        display: flex;
+        flex-direction: row;
+        border-bottom: 1px solid lightblue;
+        justify-content: space-between;
+        }
+        #container #content-header #info,
+        #container #content-header #content-icons {
+        display: flex;
+        padding: 4px 0;
+        font-weight: bold;
+        }
+        #container #content-header #content-icons span {
+        padding-left: 16px;
+        }
+        #container #search {
+        width: 100%;
+        padding: 16px 0;
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        }
+        #container #search #input-wrapper {
+        position: relative;
+        margin-left: auto;
+        }
+        #container #search #input-wrapper span {
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        }
+        #container #search #input-wrapper input {
+        display: flex;
+        width: 200px;
+        line-height: 18px;
+        padding: 4px;
+        }
+        #container #content-table {
+        text-align: left;
+        width: 100%;
+        font-size: 12px;
+        cell-spacing: 0;
+        }
+        #container #content-table tr th,
+        #container #content-table tr td {
+        width: 1%;
+        padding: 10px 8px;
+        }
+        #container #content-table tr th {
+        background-color: rgba(0, 0, 0, 0.1);
+        }
+        #container #content-table tr .client-name {
+        color: #9696c8;
+        text-decoration: underline;
+        cursor: pointer;
+        }
+
+        #popup {
+        opacity: 0;
+        position: absolute;
+        padding: 12px;
+        top: 100px;
+        left: 100px;
+        display: flex;
+        flex-direction: column;
+        width: 300px;
+        height: 400px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #popup h1,
+        #popup h2 {
+        font-size: 16px;
+        }
+        #popup h2 {
+        color: lightblue;
+        }
+        #popup p {
+        font-size: 10px;
+        }
+        #popup td {
+        padding: 4px;
+        }
+        #popup.open {
+        opacity: 1;
+        animation-name: appear;
+        animation-duration: 0.3s;
+        }
+        #popup.close {
+        opacity: 0;
+        animation-name: disappear;
+        animation-duration: 0.3s;
+        }
+        #popup #content {
+        flex: 1;
+        }
+        #popup #footer span {
+        padding: 4px;
+        }
+
+        @keyframes appear {
+        0% {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        100% {
+            opacity: 1;
+            width: 300px;
+            height: 400px;
+        }
+        }
+        @keyframes disappear {
+        0% {
+            opacity: 1;
+            width: 300px;
+            height: 400px;
+        }
+        100% {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        }
+    </style>
+</head>
+<body>
+    
+<div id="global">
+    <div id="header">
+        <p>SAP Demo</p>
+    </div>
+    <div id="container">
+        <div id="menu">
+        <div class="menu-item"><span>ACCOUNTS</span></div>
+        </div>
+        <div id="content">
+        <div id="content-header">
+            <div id="info"><span>ACCOUNTS: </span><span>
+                ALL<span>({{count}})</span></span></div>
+            <div id="content-icons"><span>New</span><span class="fas fa-sync"></span><span class="fas fa-cog"></span></div>
+        </div>
+        <div id="search">
+            <div id="input-wrapper">
+            <input placeholder="Search" type="text" v-model="query"/><span class="fas fa-search"></span>
+            </div>
+        </div>
+        <div id="content-table">
+            <table cellspacing="0" cellpadding="0">
+            <tr>
+                <th>id</th>
+                <th>Name</th>
+                <th>Street</th>
+                <th>City</th>
+                <th>Zip</th>
+                <th>Country</th>
+            </tr>
+            <tr v-for="person in persons">
+                <td>{{person.id}}</td>
+                <td v-on:click="select(person.id)" class="client-name"><span class="fas fa-clipboard-list"></span> {{person.name}}</td>
+                <td>{{person.street}}</td>
+                <td>{{person.city}}</td>
+                <td>{{person.zip}}</td>
+                <td>{{person.country}}</td>
+            </tr>
+            </table>
+        </div>
+        </div>
+    </div>
+    <div id="popup">
+        <div id="content">
+        <h1>CUSTOMER</h1>
+        <h2>{{selected.name}}</h2>
+        <table>
+            <tr>
+            <td>Status</td><td>{{selected.status}}</td>
+            </tr>
+            <tr>
+            <td>Prospect</td><td>{{selected.prospect}}</td>
+            </tr>
+            <tr>
+            <td>Customer</td><td>{{selected.customer}}</td>
+            </tr>
+            <tr>
+            <td>Owner</td><td>{{selected.owner}}</td>
+            </tr>
+            <tr>
+            <td>Parent Account</td><td>{{selected.parentAccount}}</td>
+            </tr>
+            <tr>
+            <td>Main Contact</td><td>{{selected.mainContact}}</td>
+            </tr>
+            <tr>
+            <td>Website</td><td>{{selected.website}}</td>
+            </tr>
+        </table>
+        </div>
+        <div id="footer"><span class="fas fa-flag"></span><span class="fas fa-wifi"></span><span class="fas fa-star"></span><span class="fas fa-upload"></span></div>
+    </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <script>
+new Vue({
+  el:"#global",
+  data:{
+    query:'',
+    selected: {},
+    items:[
+      {
+        id: "1",
+        name: "Konrad Muller",
+        street: "1234 Test St",
+        city: "Stuttgart",
+        country: "Germany",
+        zip: 1234
+      },
+      {
+        id: "2",
+        name: "Konrad Muller",
+        street: "1234 Test St",
+        city: "Stuttgart",
+        country: "Germany",
+        zip: 1234
+      },
+      {
+        id: "2",
+        name: "Konrad Muller",
+        street: "1234 Test St",
+        city: "Stuttgart",
+        country: "Germany",
+        zip: 1234
+      },
+      {
+        id: "2",
+        name: "Konrad Muller",
+        street: "1234 Test St",
+        city: "Stuttgart",
+        country: "Germany",
+        zip: 1234
+      },
+      {
+        id: "2",
+        name: "Konrad Muller",
+        street: "1234 Test St",
+        city: "Stuttgart",
+        country: "Germany",
+        zip: 1234
+      },
+      {
+        id: "2",
+        name: "Konrad Muller",
+        street: "1234 Test St",
+        city: "Stuttgart",
+        country: "Germany",
+        zip: 1234
+      },
+      {
+        id: "2",
+        name: "Konrad Muller",
+        street: "1234 Test St",
+        city: "Stuttgart",
+        country: "Germany",
+        zip: 1234
+      }
+    ]
+  },
+  methods: {
+    select: function(id){
+      console.log(id);
+      this.selected = this.items.find((i) => i.id === id);
+    }
+  },
+  computed:{
+    persons:function(){
+      var self=this;
+      return self.items.filter(function(val){
+        console.log(self.query);
+        return val.id.indexOf(self.query)!== -1 ;
+      })
+    },
+    count: function(){ return this.items.length }
+  }
+})
+
+var x = 0;
+var y = 0;
+let nameElements = document.getElementsByClassName("client-name");
+let popupElement = document.getElementById("popup");
+document.addEventListener('click', () => {
+  popupElement.classList.remove('open');
+  popupElement.classList.remove('close');
+  popupElement.classList.add('close');
+})
+popupElement.addEventListener('click', (e) => {
+  e.stopPropagation();
+});
+console.log(nameElements);
+for (let element of nameElements) {
+  element.addEventListener('click', (e) => {
+    e.stopPropagation();
+    popupElement.classList.remove('open');
+    popupElement.classList.remove('close');
+    popupElement.classList.add('open');
+    popupElement.style.top = `${e.pageY - 100}px`;
+    popupElement.style.left = `${e.pageX + 50}px`;
+    console.log(popupElement);
+  });
+}
+    </script>
+</body>
+</html>
