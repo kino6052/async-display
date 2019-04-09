@@ -7,180 +7,179 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css"></link>
-    <style>
-        @import url("https://fonts.googleapis.com/css?family=Roboto");
-        body {
-        color: rgba(0, 0, 0, 0.6);
-        font-family: "Roboto";
-        background: lightblue;
-        margin: 0;
-        padding: 0;
-        }
+<style>
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+body {
+  color: rgba(0, 0, 0, 0.6);
+  font-family: "Roboto";
+  background: lightblue;
+  margin: 0;
+  padding: 0;
+}
 
-        div {
-        background: white;
-        }
+div {
+  background: white;
+}
 
-        #header {
-        background: transparent;
-        font-size: 14px;
-        height: 48px;
-        padding-left: 10%;
-        background: white;
-        margin-bottom: 48px;
-        font-weight: bold;
-        border-top: 4px solid lightblue;
-        }
+#header {
+  background: transparent;
+  font-size: 14px;
+  height: 48px;
+  padding-left: 10%;
+  background: white;
+  margin-bottom: 48px;
+  font-weight: bold;
+  border-top: 4px solid lightblue;
+}
 
-        #global {
-        background: transparent;
-        }
+#global {
+  background: transparent;
+}
 
-        #container {
-        min-height: 400px;
-        width: 80%;
-        margin: 0 auto;
-        padding: 24px;
-        margin-bottom: 48px;
-        }
-        #container #menu {
-        padding-top: 12px;
-        margin-bottom: 24px;
-        border-bottom: 1px solid lightblue;
-        }
-        #container #menu .menu-item {
-        border-bottom: 3px solid lightblue;
-        width: 100px;
-        height: 30px;
-        text-align: center;
-        line-height: 30px;
-        }
-        #container #content-header {
-        display: flex;
-        flex-direction: row;
-        border-bottom: 1px solid lightblue;
-        justify-content: space-between;
-        }
-        #container #content-header #info,
-        #container #content-header #content-icons {
-        display: flex;
-        padding: 4px 0;
-        font-weight: bold;
-        }
-        #container #content-header #content-icons span {
-        padding-left: 16px;
-        }
-        #container #search {
-        width: 100%;
-        padding: 16px 0;
-        display: flex;
-        flex-direction: row;
-        align-content: center;
-        }
-        #container #search #input-wrapper {
-        position: relative;
-        margin-left: auto;
-        }
-        #container #search #input-wrapper span {
-        position: absolute;
-        top: 6px;
-        right: 6px;
-        }
-        #container #search #input-wrapper input {
-        display: flex;
-        width: 200px;
-        line-height: 18px;
-        padding: 4px;
-        }
-        #container #content-table {
-        text-align: left;
-        width: 100%;
-        font-size: 12px;
-        cell-spacing: 0;
-        }
-        #container #content-table tr th,
-        #container #content-table tr td {
-        width: 1%;
-        padding: 10px 8px;
-        }
-        #container #content-table tr th {
-        background-color: rgba(0, 0, 0, 0.1);
-        }
-        #container #content-table tr .client-name {
-        color: #9696c8;
-        text-decoration: underline;
-        cursor: pointer;
-        }
+#container {
+  min-height: 400px;
+  width: 80%;
+  margin: 0 auto;
+  padding: 24px;
+  margin-bottom: 48px;
+}
+#container #menu {
+  padding-top: 12px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid lightblue;
+}
+#container #menu .menu-item {
+  border-bottom: 3px solid lightblue;
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+}
+#container #content-header {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid lightblue;
+  justify-content: space-between;
+}
+#container #content-header #info,
+#container #content-header #content-icons {
+  display: flex;
+  padding: 4px 0;
+  font-weight: bold;
+}
+#container #content-header #content-icons span {
+  padding-left: 16px;
+}
+#container #search {
+  width: 100%;
+  padding: 16px 0;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+}
+#container #search #input-wrapper {
+  position: relative;
+  margin-left: auto;
+}
+#container #search #input-wrapper span {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+}
+#container #search #input-wrapper input {
+  display: flex;
+  width: 200px;
+  line-height: 18px;
+  padding: 4px;
+}
+#container #content-table {
+  text-align: left;
+  width: 100%;
+  font-size: 12px;
+  cell-spacing: 0;
+}
+#container #content-table tr th,
+#container #content-table tr td {
+  width: 1%;
+  padding: 10px 8px;
+}
+#container #content-table tr th {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+#container #content-table tr .client-name {
+  color: #9696c8;
+  text-decoration: underline;
+  cursor: pointer;
+}
 
-        #popup {
-        opacity: 0;
-        position: absolute;
-        padding: 12px;
-        top: 100px;
-        left: 100px;
-        display: flex;
-        flex-direction: column;
-        width: 300px;
-        height: 400px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        #popup h1,
-        #popup h2 {
-        font-size: 16px;
-        }
-        #popup h2 {
-        color: lightblue;
-        }
-        #popup p {
-        font-size: 10px;
-        }
-        #popup td {
-        padding: 4px;
-        }
-        #popup.open {
-        opacity: 1;
-        animation-name: appear;
-        animation-duration: 0.3s;
-        }
-        #popup.close {
-        opacity: 0;
-        animation-name: disappear;
-        animation-duration: 0.3s;
-        }
-        #popup #content {
-        flex: 1;
-        }
-        #popup #footer span {
-        padding: 4px;
-        }
+#popup {
+  display: none;
+  position: absolute;
+  padding: 12px;
+  top: 100px;
+  left: 100px;
+  flex-direction: column;
+  width: 300px;
+  height: 400px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+#popup h1,
+#popup h2 {
+  font-size: 16px;
+}
+#popup h2 {
+  color: lightblue;
+}
+#popup p {
+  font-size: 10px;
+}
+#popup td {
+  padding: 4px;
+}
+#popup.open {
+  display: flex;
+  animation-name: appear;
+  animation-duration: 0.3s;
+}
+#popup.close {
+  opacity: 0;
+  animation-name: disappear;
+  animation-duration: 0.3s;
+}
+#popup #content {
+  flex: 1;
+}
+#popup #footer span {
+  padding: 4px;
+}
 
-        @keyframes appear {
-        0% {
-            display: block;    
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        100% {
-            opacity: 1;
-            width: 300px;
-            height: 400px;
-        }
-        }
-        @keyframes disappear {
-        0% {
-            opacity: 1;
-            width: 300px;
-            height: 400px;
-        }
-        100% {
-            display: none;
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        }
-    </style>
+@keyframes appear {
+  0% {
+    display: flex;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  100% {
+    opacity: 1;
+    width: 300px;
+    height: 400px;
+  }
+}
+@keyframes disappear {
+  0% {
+    opacity: 1;
+    width: 300px;
+    height: 400px;
+  }
+  100% {
+    display: none;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+}
+</style>
 </head>
 <body>
     
