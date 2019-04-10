@@ -179,82 +179,82 @@ div {
     height: 0;
   }
 }
+
 </style>
 </head>
 <body>
-    
-<div id="global">
-    <div id="header">
-        <p>SAP Demo</p>
-    </div>
-    <div id="container">
-        <div id="menu">
-        <div class="menu-item"><span>ACCOUNTS</span></div>
-        </div>
-        <div id="content">
-        <div id="content-header">
-            <div id="info"><span>ACCOUNTS: </span><span>
-                ALL<span>({{count}})</span></span></div>
-            <div id="content-icons"><span>New</span><span class="fas fa-sync"></span><span class="fas fa-cog"></span></div>
-        </div>
-        <div id="search">
-            <div id="input-wrapper">
-            <input placeholder="Search" type="text" v-model="query"/><span class="fas fa-search"></span>
+    <div id="global">
+            <div id="header">
+                <p>SAP Demo</p>
             </div>
-        </div>
-        <div id="content-table">
-            <table cellspacing="0" cellpadding="0">
-            <tr>
-                <th>id</th>
-                <th>Name</th>
-                <th>Street</th>
-                <th>City</th>
-                <th>Zip</th>
-                <th>Country</th>
-            </tr>
-            <tr v-for="person in persons">
-                <td>{{person.id}}</td>
-                <td v-on:click="select(person.id)" class="client-name"><span class="fas fa-clipboard-list"></span> {{person.name}}</td>
-                <td>{{person.street}}</td>
-                <td>{{person.city}}</td>
-                <td>{{person.zip}}</td>
-                <td>{{person.country}}</td>
-            </tr>
-            </table>
-        </div>
-        </div>
-    </div>
-    <div id="popup">
-        <div id="content">
-        <h1>CUSTOMER</h1>
-        <h2>{{selected.name}}</h2>
-        <table>
-            <tr>
-            <td>Status</td><td>{{selected.status}}</td>
-            </tr>
-            <tr>
-            <td>Prospect</td><td>{{selected.prospect}}</td>
-            </tr>
-            <tr>
-            <td>Customer</td><td>{{selected.customer}}</td>
-            </tr>
-            <tr>
-            <td>Owner</td><td>{{selected.owner}}</td>
-            </tr>
-            <tr>
-            <td>Parent Account</td><td>{{selected.parentAccount}}</td>
-            </tr>
-            <tr>
-            <td>Main Contact</td><td>{{selected.mainContact}}</td>
-            </tr>
-            <tr>
-            <td>Website</td><td>{{selected.website}}</td>
-            </tr>
-        </table>
-        </div>
-        <div id="footer"><span class="fas fa-flag"></span><span class="fas fa-wifi"></span><span class="fas fa-star"></span><span class="fas fa-upload"></span></div>
-    </div>
-    </div>
+            <div id="container">
+                <div id="menu">
+                <div class="menu-item"><span>ACCOUNTS</span></div>
+                </div>
+                <div id="content">
+                <div id="content-header">
+                    <div id="info"><span>ACCOUNTS: </span><span>
+                        ALL<span>({{count}})</span></span></div>
+                    <div id="content-icons"><span>New</span><span class="fas fa-sync"></span><span class="fas fa-cog"></span></div>
+                </div>
+                <div id="search">
+                    <div id="input-wrapper">
+                    <input placeholder="Search" type="text" v-model="query"/><span class="fas fa-search"></span>
+                    </div>
+                </div>
+                <div id="content-table">
+                    <table cellspacing="0" cellpadding="0">
+                    <tr>
+                        <th>id</th>
+                        <th>Name</th>
+                        <th>Street</th>
+                        <th>City</th>
+                        <th>Zip</th>
+                        <th>Country</th>
+                    </tr>
+                    <tr v-for="person in persons">
+                        <td>{{person["Account Number"]}}</td>
+                        <td v-on:click="select(person['Account Number'])" class="client-name"><span class="fas fa-clipboard-list"></span> {{person["Account Name"]}}</td>
+                        <td>{{person["Billing Street"]}}</td>
+                        <td>{{person["Billing City"]}}</td>
+                        <td>{{person["Billing Zip/Postal Code"]}}</td>
+                        <td>{{person["Billing Country"]}}</td>
+                    </tr>
+                    </table>
+                </div>
+                </div>
+            </div>
+            <div id="popup">
+                <div id="content">
+                <h1>CUSTOMER</h1>
+                <h2>{{selected["Account Name"]}}</h2>
+                <table>
+                    <tr>
+                    <td>Status</td><td>{{selected.status}}</td>
+                    </tr>
+                    <tr>
+                    <td>Prospect</td><td>{{selected.prospect}}</td>
+                    </tr>
+                    <tr>
+                    <td>Customer</td><td>{{selected.customer}}</td>
+                    </tr>
+                    <tr>
+                    <td>Owner</td><td>{{selected.owner}}</td>
+                    </tr>
+                    <tr>
+                    <td>Parent Account</td><td>{{selected.parentAccount}}</td>
+                    </tr>
+                    <tr>
+                    <td>Main Contact</td><td>{{selected.mainContact}}</td>
+                    </tr>
+                    <tr>
+                    <td>Website</td><td>{{selected.website}}</td>
+                    </tr>
+                </table>
+                </div>
+                <div id="footer"><span class="fas fa-flag"></span><span class="fas fa-wifi"></span><span class="fas fa-star"></span><span class="fas fa-upload"></span></div>
+            </div>
+            </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
     <script>
 new Vue({
@@ -262,69 +262,814 @@ new Vue({
   data:{
     query:'',
     selected: {},
-    items:[
-      {
-        id: "1",
-        name: "Konrad Muller",
-        street: "1234 Test St",
-        city: "Stuttgart",
-        country: "Germany",
-        zip: 1234
-      },
-      {
-        id: "2",
-        name: "Konrad Muller",
-        street: "1234 Test St",
-        city: "Stuttgart",
-        country: "Germany",
-        zip: 1234
-      },
-      {
-        id: "2",
-        name: "Konrad Muller",
-        street: "1234 Test St",
-        city: "Stuttgart",
-        country: "Germany",
-        zip: 1234
-      },
-      {
-        id: "2",
-        name: "Konrad Muller",
-        street: "1234 Test St",
-        city: "Stuttgart",
-        country: "Germany",
-        zip: 1234
-      },
-      {
-        id: "2",
-        name: "Konrad Muller",
-        street: "1234 Test St",
-        city: "Stuttgart",
-        country: "Germany",
-        zip: 1234
-      },
-      {
-        id: "2",
-        name: "Konrad Muller",
-        street: "1234 Test St",
-        city: "Stuttgart",
-        country: "Germany",
-        zip: 1234
-      },
-      {
-        id: "2",
-        name: "Konrad Muller",
-        street: "1234 Test St",
-        city: "Stuttgart",
-        country: "Germany",
-        zip: 1234
-      }
-    ]
+    items: [
+  {
+    "Account Number": "CD736025",
+    "Account Name": "University of Arizona",
+    "Billing State/Province": "AZ",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "Tucson",
+    "Billing Country": "",
+    "Billing Street": "888 N Euclid \nHallis Center, Room 501\nTucson, AZ 85721\nUnited States"
+  },
+  {
+    "Account Number": "CD656092",
+    "Account Name": "Burlington Textiles Corp of America",
+    "Billing State/Province": "NC",
+    "Billing Zip/Postal Code": 27215,
+    "Billing City": "Burlington",
+    "Billing Country": "USA",
+    "Billing Street": "525 S. Lexington Ave"
+  },
+  {
+    "Account Number": "CD451796",
+    "Account Name": "Edge Communications",
+    "Billing State/Province": "TX",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "Austin",
+    "Billing Country": "",
+    "Billing Street": "312 Constitution Place\nAustin, TX 78767\nUSA"
+  },
+  {
+    "Account Number": "CD439877",
+    "Account Name": "Grand Hotels & Resorts Ltd",
+    "Billing State/Province": "IL",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "Chicago",
+    "Billing Country": "",
+    "Billing Street": "2334 N. Michigan Avenue, Suite 1500\nChicago, IL 60601, USA"
+  },
+  {
+    "Account Number": "CD355120-B",
+    "Account Name": "United Oil & Gas, Singapore",
+    "Billing State/Province": "Singapore",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "Singapore",
+    "Billing Country": "",
+    "Billing Street": "9 Tagore Lane\nSingapore, Singapore 787472\nSingapore"
+  },
+  {
+    "Account Number": "CD355119-A",
+    "Account Name": "United Oil & Gas, UK",
+    "Billing State/Province": "UK",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": "Kings Park, 17th Avenue, Team Valley Trading Estate,\nGateshead, Tyne and Wear NE26 3HS\nUnited Kingdom"
+  },
+  {
+    "Account Number": "CD355118",
+    "Account Name": "United Oil & Gas Corp.",
+    "Billing State/Province": "NY",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "New York",
+    "Billing Country": "",
+    "Billing Street": "1301 Avenue of the Americas \nNew York, NY 10019\nUSA"
+  },
+  {
+    "Account Number": "CC978213",
+    "Account Name": "GenePoint",
+    "Billing State/Province": "CA",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "Mountain View",
+    "Billing Country": "",
+    "Billing Street": "345 Shoreline Park\nMountain View, CA 94043\nUSA"
+  },
+  {
+    "Account Number": "CC947211",
+    "Account Name": "Express Logistics and Transport",
+    "Billing State/Province": "OR",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "Portland",
+    "Billing Country": "",
+    "Billing Street": "620 SW 5th Avenue Suite 400\nPortland, Oregon 97204\nUnited States"
+  },
+  {
+    "Account Number": "CC634267",
+    "Account Name": "Dickenson plc",
+    "Billing State/Province": "KS",
+    "Billing Zip/Postal Code": 66045,
+    "Billing City": "Lawrence",
+    "Billing Country": "USA",
+    "Billing Street": "1301 Hoch Drive"
+  },
+  {
+    "Account Number": "CC213425",
+    "Account Name": "Pyramid Construction Inc.",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": 75251,
+    "Billing City": "Paris",
+    "Billing Country": "France",
+    "Billing Street": "2 Place Jussieu"
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "sForce",
+    "Billing State/Province": "CA",
+    "Billing Zip/Postal Code": 94087,
+    "Billing City": "San Francisco",
+    "Billing Country": "US",
+    "Billing Street": "The Landmark @ One Market"
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  },
+  {
+    "Account Number": "",
+    "Account Name": "Name",
+    "Billing State/Province": "",
+    "Billing Zip/Postal Code": "",
+    "Billing City": "",
+    "Billing Country": "",
+    "Billing Street": ""
+  }
+]
   },
   methods: {
     select: function(id){
       console.log(id);
-      this.selected = this.items.find((i) => i.id === id);
+      this.selected = this.items.find((i) => i["Account Number"] === id);
     }
   },
   computed:{
@@ -332,7 +1077,7 @@ new Vue({
       var self=this;
       return self.items.filter(function(val){
         console.log(self.query);
-        return val.id.indexOf(self.query)!== -1 ;
+        return val["Account Number"].indexOf(self.query)!== -1 ;
       })
     },
     count: function(){ return this.items.length }
