@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ERP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css"></link>
+  <style>
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+#popup {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: 'Roboto';
+  width: 300px;
+  height: 150px;
+  box-shadow: 0 0 4px #667667;
+}
+#popup #header {
+  background-color: #EFDBDB;
+  color: #AD4B4B;
+  font-size: 18px;
+  line-height: 34px;
+  padding: 0 24px;
+  max-height: 34px;
+  font-weight: bold;
+}
+#popup #header p {
+  margin: 0;
+  padding: 0;
+}
+#popup #body {
+  color: #667667;
+  padding: 0 24px;
+}
+#popup #buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+#popup #buttons button {
+  width: 84px;
+  padding: 6px;
+  border-radius: 4px;
+  color: white;
+  background-color: #2B88F7;
+  border: 1px solid blue;
+  margin: 0 12px 12px 0;
+}
+  </style>
+</head>
+<body>
+  <div id="popup">
+    <div id="header">
+      <p>Success</p>
+    </div>
+    <div id="body">
+      <p>Card was ordered</p>
+    </div>
+    <div id="buttons">
+      <button>Done</button>
+    </div>
+  </div>
+</body>
+</html>
