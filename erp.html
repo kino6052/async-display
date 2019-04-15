@@ -159,9 +159,15 @@ body {
 #global #content .section .content .row .input label {
   margin: 6px 0;
 }
-#global #content .section .content .row .input select, #global #content .section .content .row .input input {
+#global #content .section .content .row .input select {
   width: 300px;
+  height: 34px;
 }
+#global #content .section .content .row .input input {
+  width: 300px;
+  height: 20px;
+}
+
 </style>
 </head>
 <body>
@@ -183,7 +189,7 @@ body {
           </div>
         </div>
       </div>
-      <div id="bottom"><span class="fas fa-clock"></span><span class="fas fa-star"></span><span class="fas fa-home"></span><span>Activities</span><span>Payments</span><span>Transactions</span><span>Lists</span><span>Reports</span><span>Documents</span><span>Setup</span><span>Customization</span><span>Support</span><span>SuiteSocial</span></div>
+      <div id="bottom"><span class="fas fa-clock"></span><span class="fas fa-star"></span><span class="fas fa-home"></span><span>Activities</span><span>Payments</span><span>Transactions</span><span>Lists</span><span>Reports</span><span>Documents</span><span>Setup</span><span>Customization</span></div>
     </div>
     <div id="content">
       <div id="header">
@@ -261,7 +267,7 @@ body {
     </div>
   </div>
   <script>
-    document.getElementById("b").addEventListener('click', () => { const name = document.getElementById('accountName').value; window.location = `https://kino6052.github.io/async-display/erp-success.html?name=${ name || '' }` });
+    document.getElementById("b").addEventListener('click', () => { const name = document.getElementById('accountName').value; window.location = `./async-display/erp-success.html?name=${ name || '' }` });
   </script>
 </body>
 </html>
