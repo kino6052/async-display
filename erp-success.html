@@ -58,16 +58,20 @@ body {
   </style>
 </head>
 <body>
-  <div id="popup">
-    <div id="header">
-      <p>Success</p>
+    <div id="popup">
+      <div id="header">
+        <p>Success</p>
+      </div>
+      <div id="body">
+        <p>Card was ordered for<span id="name"> </span></p>
+      </div>
+      <div id="buttons">
+        <button>Done</button>
+      </div>
     </div>
-    <div id="body">
-      <p>Card was ordered</p>
-    </div>
-    <div id="buttons">
-      <button>Done</button>
-    </div>
-  </div>
+  <script>
+let name = decodeURIComponent(window.location.search).match(/(?<=\?name=)[\w|\s]+/gi)[0];
+document.getElementById("name").innerText = ` ${name}`;  
+  </script>
 </body>
 </html>
