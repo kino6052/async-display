@@ -404,8 +404,8 @@ for (let element of nameElements) {
     popupElement.classList.remove('open');
     popupElement.classList.remove('close');
     popupElement.classList.add('open');
-    popupElement.style.top = `${e.pageY - 100}px`;
-    popupElement.style.left = `${e.pageX + 50}px`;
+    popupElement.style.top = `${element.getBoundingClientRect().y - 100}px`;
+    popupElement.style.left = `${element.getBoundingClientRect().x + 50}px`;
     console.log(popupElement);
   });
 }
